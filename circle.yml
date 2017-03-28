@@ -1,0 +1,15 @@
+machine:
+  node:
+    version:
+      6.9.1
+test:
+  pre:
+    - npm start:
+        background: true
+    - sleep 5
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: skillset-portal
+  
