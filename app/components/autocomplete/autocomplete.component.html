@@ -1,0 +1,35 @@
+<p-autoComplete  [(ngModel)]="countries" [suggestions]="filteredCountriesMultiple" (completeMethod)="filterCountryMultiple($event)" styleClass="wid100"
+    [minLength]="1" placeholder="Countries" field="name" [multiple]="true">
+</p-autoComplete>
+<ul>
+    <li *ngFor="let c of countries">{{c.name}}</li>
+</ul> 
+
+<p-growl [value]="msgs"></p-growl>
+    
+<p-fileUpload name="demo[]" url="http://httpbin.org/post" (onUpload)="onUpload($event)" 
+        multiple="multiple" accept="image/*" maxFileSize="1000000" auto="auto" >
+    <template pTemplate type="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+    </template>    
+<!-- <template pTemplate="toolbar">
+            <div>Upload 3 Files</div>
+        </template>  
+        <template let-file pTemplate="file">
+            <div>Custom UI to display a file</div>
+        </template> 
+        <template pTemplate="content">
+            <div>Custom UI to manage uploaded files</div>
+        </template> 	 -->
+</p-fileUpload>
+
+<div class="ui-g-12 ui-md-4">
+        <h3>Icon</h3>
+        <p-calendar [(ngModel)]="date3" [monthNavigator]="true" [yearNavigator]="true" [showIcon]="true" yearRange="2000:2030"></p-calendar> <span style="margin-left:35px">{{date3|date}}</span>
+    </div>
+	
+<p-multiSelect [options]="countris" [(ngModel)]="selectedContries"></p-multiSelect>
+
+<p>Selected countries: {{selectedContries}}</p>	

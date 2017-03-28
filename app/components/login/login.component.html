@@ -1,0 +1,15 @@
+ <form  class="contact" [formGroup]="loginForm" (ngSubmit)="doLogin()">
+    <fieldset class="contact-inner">
+      <p class="contact-input">
+        <input type="text" formControlName="name" placeholder="Employee Id" autofocus>
+      </p>
+
+      <p class="contact-input">
+        <input type="password" formControlName="password" placeholder="Employee Password" autofocus>
+      </p>
+
+      <p class="contact-submit">
+        <input type="submit" value="Login" />
+      </p>
+    </fieldset>
+  </form>

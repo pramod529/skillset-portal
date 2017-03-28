@@ -1,0 +1,50 @@
+<div [@visibilityChanged]="visibility" >
+<!--<p-messages [value]="msgs"></p-messages>
+ </div>-->
+ <p-growl [value]="msgs" sticky="sticky"></p-growl> 
+
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+	<i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+	<input #gb type="text" pInputText size="50" placeholder="Global Filter">
+	<button style="width:50%" type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()" style="float:left"></button>
+</div>
+<p-dataTable #dt [value]="employees" selectionMode="single" scrollable="true" scrollHeight="250px" (onRowSelect)="onRowSelect($event)"  [paginator]="true" [rows]="20" [responsive]="true" [globalFilter]="gb" >
+	<header>CRUD for Employees</header>
+	<p-column field="id" header="Id" [filter]="true" [sortable]="true"></p-column>
+	<p-column field="name" header="Name" [filter]="true" [sortable]="true"></p-column>
+	<p-column field="designation" header="Designation" [filter]="true" [sortable]="true"></p-column>
+	<p-column field="skills" header="Skills" [filter]="true" [sortable]="true"></p-column>
+	<p-column field="status" header="Status" [filter]="true" [sortable]="true"></p-column>
+	
+	<footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></footer>
+</p-dataTable>
+<p-dialog header="Employee Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+<div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" *ngIf="emp1">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="id">Id</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="id" [(ngModel)]="emp1.id" /></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="name">Name</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="emp1.name" /></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="designation">Designation</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="designation" [(ngModel)]="emp1.designation" /></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="skills">Skills</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="skills" [(ngModel)]="emp1.skills" /></div>
+            </div>
+			 <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="status">Status</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="status" [(ngModel)]="emp1.status" /></div>
+            </div>
+        </div>
+        <footer>
+            <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+                <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+            </div>
+        </footer>
+   </p-dialog>

@@ -1,0 +1,6 @@
+{
+  "name": "skillset-portal",
+  "description": "Starter application of Angular2 and Express",
+  "repository": "https://github.com/vladotesanovic/angular2-express-slim",
+  "keywords": ["angular2", "express", "node"]
+}
